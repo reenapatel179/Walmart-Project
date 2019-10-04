@@ -1,0 +1,2791 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20193.19.0821.2225                               -->
+<workbook source-build='2019.3.0 (20193.19.0821.2225)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <SortTagCleanup />
+    <VizInTooltipHideWorksheet />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='Walmart_Project' path='/workbooks' revision='1.4' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style-theme name='modern' />
+  <datasources>
+    <datasource caption='features+' inline='true' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='features' name='textscan.0oq99jv1il22c21d5xkrp1lcqo0l'>
+            <connection class='textscan' directory='C:/Users/REENA SAYANI/Desktop/BootCamp/Walmart Project/Walmart-Project/walmart-recruiting-store-sales-forecasting' filename='features.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='AND'>
+              <expression op='='>
+                <expression op='[features.csv].[Store]' />
+                <expression op='[train.csv].[Store]' />
+              </expression>
+              <expression op='='>
+                <expression op='[features.csv].[Date]' />
+                <expression op='[train.csv].[Date]' />
+              </expression>
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[features.csv].[Store]' />
+                <expression op='[stores.csv].[Store]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.0oq99jv1il22c21d5xkrp1lcqo0l' name='features.csv' table='[features#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='integer' name='Store' ordinal='0' />
+                <column datatype='date' name='Date' ordinal='1' />
+                <column datatype='real' name='Temperature' ordinal='2' />
+                <column datatype='real' name='Fuel_Price' ordinal='3' />
+                <column datatype='string' name='MarkDown1' ordinal='4' />
+                <column datatype='string' name='MarkDown2' ordinal='5' />
+                <column datatype='string' name='MarkDown3' ordinal='6' />
+                <column datatype='string' name='MarkDown4' ordinal='7' />
+                <column datatype='string' name='MarkDown5' ordinal='8' />
+                <column datatype='string' name='CPI' ordinal='9' />
+                <column datatype='string' name='Unemployment' ordinal='10' />
+                <column datatype='boolean' name='IsHoliday' ordinal='11' />
+              </columns>
+            </relation>
+            <relation connection='textscan.0oq99jv1il22c21d5xkrp1lcqo0l' name='stores.csv' table='[stores#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='integer' name='Store' ordinal='0' />
+                <column datatype='string' name='Type' ordinal='1' />
+                <column datatype='integer' name='Size' ordinal='2' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.0oq99jv1il22c21d5xkrp1lcqo0l' name='train.csv' table='[train#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='Store' ordinal='0' />
+              <column datatype='integer' name='Dept' ordinal='1' />
+              <column datatype='date' name='Date' ordinal='2' />
+              <column datatype='real' name='Weekly_Sales' ordinal='3' />
+              <column datatype='boolean' name='IsHoliday' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[CPI]' value='[features.csv].[CPI]' />
+          <map key='[Date (train.csv)]' value='[train.csv].[Date]' />
+          <map key='[Date]' value='[features.csv].[Date]' />
+          <map key='[Dept]' value='[train.csv].[Dept]' />
+          <map key='[Fuel_Price]' value='[features.csv].[Fuel_Price]' />
+          <map key='[IsHoliday (train.csv)]' value='[train.csv].[IsHoliday]' />
+          <map key='[IsHoliday]' value='[features.csv].[IsHoliday]' />
+          <map key='[MarkDown1]' value='[features.csv].[MarkDown1]' />
+          <map key='[MarkDown2]' value='[features.csv].[MarkDown2]' />
+          <map key='[MarkDown3]' value='[features.csv].[MarkDown3]' />
+          <map key='[MarkDown4]' value='[features.csv].[MarkDown4]' />
+          <map key='[MarkDown5]' value='[features.csv].[MarkDown5]' />
+          <map key='[Size]' value='[stores.csv].[Size]' />
+          <map key='[Store (stores.csv)]' value='[stores.csv].[Store]' />
+          <map key='[Store (train.csv)]' value='[train.csv].[Store]' />
+          <map key='[Store]' value='[features.csv].[Store]' />
+          <map key='[Temperature]' value='[features.csv].[Temperature]' />
+          <map key='[Type]' value='[stores.csv].[Type]' />
+          <map key='[Unemployment]' value='[features.csv].[Unemployment]' />
+          <map key='[Weekly_Sales]' value='[train.csv].[Weekly_Sales]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Store]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Store</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Temperature</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Temperature]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Temperature</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel_Price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Fuel_Price]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Fuel_Price</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MarkDown1]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MarkDown2]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown2</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MarkDown3]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown3</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown4</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MarkDown4]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown4</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown5</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MarkDown5]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown5</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CPI</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CPI]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>CPI</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unemployment</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Unemployment]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Unemployment</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IsHoliday</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[IsHoliday]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>IsHoliday</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[stores.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='record-delimiter'>&quot;\\r&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Store (stores.csv)]</local-name>
+            <parent-name>[stores.csv]</parent-name>
+            <remote-alias>Store</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Type]</local-name>
+            <parent-name>[stores.csv]</parent-name>
+            <remote-alias>Type</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Size</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Size]</local-name>
+            <parent-name>[stores.csv]</parent-name>
+            <remote-alias>Size</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Store (train.csv)]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Store</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Dept</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Dept]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Dept</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date (train.csv)]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Weekly_Sales</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Weekly_Sales]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Weekly_Sales</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IsHoliday</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[IsHoliday (train.csv)]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>IsHoliday</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]:1&quot;' value='Avg. Weekly Sales  ' />
+          <alias key='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Dept:qk]&quot;' value='# of Dept' />
+          <alias key='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Store:qk]&quot;' value='# of Store' />
+        </aliases>
+      </column>
+      <column aggregation='Avg' datatype='real' datatype-customized='true' name='[CPI]' role='measure' type='quantitative' />
+      <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' datatype='integer' name='[Dept]' role='dimension' type='ordinal' />
+      <column caption='Fuel Price' datatype='real' name='[Fuel_Price]' role='measure' type='quantitative' />
+      <column datatype='boolean' name='[IsHoliday (train.csv)]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='false' value='No Holiday' />
+          <alias key='true' value='Holiday' />
+        </aliases>
+      </column>
+      <column caption='Is Holiday' datatype='boolean' name='[IsHoliday]' role='dimension' type='nominal' />
+      <column aggregation='CountD' datatype='real' datatype-customized='true' name='[MarkDown1]' role='measure' type='quantitative' />
+      <column aggregation='CountD' datatype='real' datatype-customized='true' name='[MarkDown2]' role='measure' type='quantitative' />
+      <column aggregation='CountD' datatype='real' datatype-customized='true' name='[MarkDown3]' role='measure' type='quantitative' />
+      <column aggregation='CountD' datatype='real' datatype-customized='true' name='[MarkDown4]' role='measure' type='quantitative' />
+      <column aggregation='CountD' datatype='real' datatype-customized='true' name='[MarkDown5]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Sum' datatype='integer' name='[Store (train.csv)]' role='dimension' type='ordinal' />
+      <column datatype='string' datatype-customized='true' name='[Store]' role='dimension' type='nominal' />
+      <column aggregation='Avg' datatype='real' name='[Temperature]' role='measure' type='quantitative' />
+      <column datatype='string' name='[Type]' role='dimension' type='nominal' />
+      <column datatype='real' datatype-customized='true' name='[Unemployment]' role='measure' type='quantitative' />
+      <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+      <column-instance column='[Fuel_Price]' derivation='Avg' name='[avg:Fuel_Price:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Temperature]' derivation='Avg' name='[avg:Temperature:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Unemployment]' derivation='Avg' name='[avg:Unemployment:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Weekly_Sales]' derivation='Avg' name='[avg:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Dept]' derivation='CountD' name='[ctd:Dept:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Store]' derivation='CountD' name='[ctd:Store:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Fuel_Price]' derivation='Max' name='[max:Fuel_Price:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Temperature]' derivation='Max' name='[max:Temperature:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Weekly_Sales]' derivation='Max' name='[max:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Fuel_Price]' derivation='Min' name='[min:Fuel_Price:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Temperature]' derivation='Min' name='[min:Temperature:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Weekly_Sales]' derivation='Min' name='[min:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[IsHoliday (train.csv)]' derivation='None' name='[none:IsHoliday (train.csv):nk]' pivot='key' type='nominal' />
+      <column-instance column='[Type]' derivation='None' name='[none:Type:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Fuel_Price]' derivation='Sum' name='[sum:Fuel_Price:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Unemployment]' derivation='Sum' name='[sum:Unemployment:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Weekly_Sales]' derivation='Sum' name='[sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+      <group caption='Tooltip (DAY(Date))' hidden='true' name='[Tooltip (DAY(Date))]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tdy:Date:ok]' />
+        </groupfilter>
+      </group>
+      <group caption='Tooltip (YEAR(Date))' hidden='true' name='[Tooltip (YEAR(Date))]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[yr:Date:ok]' />
+        </groupfilter>
+      </group>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Reena/features+.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <cols>
+            <map key='[CPI]' value='[Extract].[CPI]' />
+            <map key='[Date (train.csv)]' value='[Extract].[Date]' />
+            <map key='[Date]' value='[Extract].[Date1]' />
+            <map key='[Dept]' value='[Extract].[Dept]' />
+            <map key='[Fuel_Price]' value='[Extract].[Fuel_Price]' />
+            <map key='[IsHoliday (train.csv)]' value='[Extract].[IsHoliday]' />
+            <map key='[IsHoliday]' value='[Extract].[IsHoliday1]' />
+            <map key='[MarkDown1]' value='[Extract].[MarkDown1]' />
+            <map key='[MarkDown2]' value='[Extract].[MarkDown2]' />
+            <map key='[MarkDown3]' value='[Extract].[MarkDown3]' />
+            <map key='[MarkDown4]' value='[Extract].[MarkDown4]' />
+            <map key='[MarkDown5]' value='[Extract].[MarkDown5]' />
+            <map key='[Size]' value='[Extract].[Size]' />
+            <map key='[Store (stores.csv)]' value='[Extract].[Store]' />
+            <map key='[Store (train.csv)]' value='[Extract].[Store1]' />
+            <map key='[Store]' value='[Extract].[Store2]' />
+            <map key='[Temperature]' value='[Extract].[Temperature]' />
+            <map key='[Type]' value='[Extract].[Type]' />
+            <map key='[Unemployment]' value='[Extract].[Unemployment]' />
+            <map key='[Weekly_Sales]' value='[Extract].[Weekly_Sales]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Store2</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Store]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Store2</remote-alias>
+              <ordinal>0</ordinal>
+              <family>features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date1</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date1</remote-alias>
+              <ordinal>1</ordinal>
+              <family>features.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>272</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Temperature</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Temperature]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Temperature</remote-alias>
+              <ordinal>2</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>16790</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Fuel_Price</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Fuel_Price]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Fuel_Price</remote-alias>
+              <ordinal>3</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3167</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown1</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown1</remote-alias>
+              <ordinal>4</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14425</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown2</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown2]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown2</remote-alias>
+              <ordinal>5</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9556</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown3</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown3]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown3</remote-alias>
+              <ordinal>6</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9424</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown4</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown4]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown4</remote-alias>
+              <ordinal>7</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12587</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown5</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown5]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown5</remote-alias>
+              <ordinal>8</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14656</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>CPI</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[CPI]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>CPI</remote-alias>
+              <ordinal>9</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>7992</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Unemployment</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Unemployment]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Unemployment</remote-alias>
+              <ordinal>10</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>640</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>IsHoliday1</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[IsHoliday]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>IsHoliday1</remote-alias>
+              <ordinal>11</ordinal>
+              <family>features.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Store</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Store (stores.csv)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Store</remote-alias>
+              <ordinal>12</ordinal>
+              <family>stores.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Type</remote-alias>
+              <ordinal>13</ordinal>
+              <family>stores.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Size</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Size]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Size</remote-alias>
+              <ordinal>14</ordinal>
+              <family>stores.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>40</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Store1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Store (train.csv)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Store1</remote-alias>
+              <ordinal>15</ordinal>
+              <family>train.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>46</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Dept</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Dept]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Dept</remote-alias>
+              <ordinal>16</ordinal>
+              <family>train.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>91</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date (train.csv)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date</remote-alias>
+              <ordinal>17</ordinal>
+              <family>train.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>144</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Weekly_Sales</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Weekly_Sales]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Weekly_Sales</remote-alias>
+              <ordinal>18</ordinal>
+              <family>train.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>281514</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>IsHoliday</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[IsHoliday (train.csv)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>IsHoliday</remote-alias>
+              <ordinal>19</ordinal>
+              <family>train.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.525' measure-ordering='alphabetic' measure-percentage='0.475' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:IsHoliday (train.csv):nk]' type='palette'>
+            <map to='#24693d'>
+              <bucket>true</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#b3e0a6'>
+              <bucket>false</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Forecast Indicator:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Actual&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Estimate&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]:1&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Weekly_Sales:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Weekly_Sales:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Temperature:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]:1&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Unemployment:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Fuel_Price:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Fuel_Price:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Fuel_Price:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Fuel_Price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Temperature:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Temperature:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Type:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;A&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;C&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;B&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+    </datasource>
+    <datasource caption='train' inline='true' name='federated.0hxbx691384ks0192r5zk0tw49ph' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='train' name='textscan.0dsa6jh1941c061b90khf1l2gacw'>
+            <connection class='textscan' directory='C:/Users/REENA SAYANI/Desktop/BootCamp/Walmart Project/Walmart-Project/walmart-recruiting-store-sales-forecasting' filename='train.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0dsa6jh1941c061b90khf1l2gacw' name='train.csv' table='[train#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='Store' ordinal='0' />
+            <column datatype='integer' name='Dept' ordinal='1' />
+            <column datatype='date' name='Date' ordinal='2' />
+            <column datatype='real' name='Weekly_Sales' ordinal='3' />
+            <column datatype='boolean' name='IsHoliday' ordinal='4' />
+          </columns>
+        </relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Store]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Store</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Dept</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Dept]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Dept</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Weekly_Sales</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Weekly_Sales]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>Weekly_Sales</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IsHoliday</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[IsHoliday]</local-name>
+            <parent-name>[train.csv]</parent-name>
+            <remote-alias>IsHoliday</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Is Holiday' datatype='boolean' name='[IsHoliday]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/TEMP_0m4hzcc08wz4jw0zvugkw1f4m8kj.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Store</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Store]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Store</remote-alias>
+              <ordinal>0</ordinal>
+              <family>train.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Dept</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Dept]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Dept</remote-alias>
+              <ordinal>1</ordinal>
+              <family>train.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>115</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date</remote-alias>
+              <ordinal>2</ordinal>
+              <family>train.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>143</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Weekly_Sales</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Weekly_Sales]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Weekly_Sales</remote-alias>
+              <ordinal>3</ordinal>
+              <family>train.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>281375</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>IsHoliday</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[IsHoliday]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>IsHoliday</remote-alias>
+              <ordinal>4</ordinal>
+              <family>train.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.452273' measure-ordering='alphabetic' measure-percentage='0.547727' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='features' inline='true' name='federated.1dfb4g410qkur71exv7hz11aeiib' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='features' name='textscan.16t01xh0ppbylk1gv0f5f1re7mkz'>
+            <connection class='textscan' directory='C:/Users/REENA SAYANI/Desktop/BootCamp/Walmart Project/Walmart-Project/walmart-recruiting-store-sales-forecasting' filename='features.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.16t01xh0ppbylk1gv0f5f1re7mkz' name='features.csv' table='[features#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='Store' ordinal='0' />
+            <column datatype='date' name='Date' ordinal='1' />
+            <column datatype='real' name='Temperature' ordinal='2' />
+            <column datatype='real' name='Fuel_Price' ordinal='3' />
+            <column datatype='real' name='MarkDown1' ordinal='4' />
+            <column datatype='real' name='MarkDown2' ordinal='5' />
+            <column datatype='real' name='MarkDown3' ordinal='6' />
+            <column datatype='real' name='MarkDown4' ordinal='7' />
+            <column datatype='real' name='MarkDown5' ordinal='8' />
+            <column datatype='string' name='CPI' ordinal='9' />
+            <column datatype='string' name='Unemployment' ordinal='10' />
+            <column datatype='boolean' name='IsHoliday' ordinal='11' />
+          </columns>
+        </relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Store</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Store]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Store</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Temperature</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Temperature]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Temperature</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel_Price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Fuel_Price]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Fuel_Price</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MarkDown1]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown2</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MarkDown2]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown2</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown3</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MarkDown3]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown3</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown4</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MarkDown4]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown4</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MarkDown5</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MarkDown5]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>MarkDown5</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CPI</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CPI]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>CPI</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unemployment</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Unemployment]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>Unemployment</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IsHoliday</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[IsHoliday]</local-name>
+            <parent-name>[features.csv]</parent-name>
+            <remote-alias>IsHoliday</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='real' datatype-customized='true' name='[CPI]' role='measure' type='quantitative' />
+      <column caption='Fuel Price' datatype='real' name='[Fuel_Price]' role='measure' type='quantitative' />
+      <column caption='Is Holiday' datatype='boolean' name='[IsHoliday]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Sum' datatype='integer' name='[Store]' role='dimension' type='ordinal' />
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/TEMP_0b8751j1s5jut71dudj9l04dteyp.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Store</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Store]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Store</remote-alias>
+              <ordinal>0</ordinal>
+              <family>features.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date</remote-alias>
+              <ordinal>1</ordinal>
+              <family>features.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>185</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Temperature</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Temperature]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Temperature</remote-alias>
+              <ordinal>2</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2846</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Fuel_Price</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Fuel_Price]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Fuel_Price</remote-alias>
+              <ordinal>3</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1155</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown1</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown1</remote-alias>
+              <ordinal>4</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5296</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown2</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown2]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown2</remote-alias>
+              <ordinal>5</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2221</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown3</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown3]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown3</remote-alias>
+              <ordinal>6</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2167</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown4</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown4]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown4</remote-alias>
+              <ordinal>7</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4297</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MarkDown5</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[MarkDown5]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MarkDown5</remote-alias>
+              <ordinal>8</ordinal>
+              <family>features.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5303</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>CPI</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[CPI]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>CPI</remote-alias>
+              <ordinal>9</ordinal>
+              <family>features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1907</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Unemployment</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Unemployment]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Unemployment</remote-alias>
+              <ordinal>10</ordinal>
+              <family>features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>549</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>IsHoliday</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[IsHoliday]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>IsHoliday</remote-alias>
+              <ordinal>11</ordinal>
+              <family>features.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.379545' measure-ordering='alphabetic' measure-percentage='0.620455' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+      <datasources>
+        <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+        <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+        <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]'>
+        <groupfilter from='2010' function='range' level='[yr:Date:ok]' to='2012' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Prediction' type='sheet' worksheet='Summary by Store Type ' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Prediction' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Prediction' type='sheet' worksheet='Avg Unemp (2)' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Prediction' />
+      </command>
+    </action>
+    <action caption='Filter 3 (generated)' name='[Action3]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Prediction' type='sheet' worksheet='Sheet 13' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Prediction' />
+      </command>
+    </action>
+    <action caption='Filter 4 (generated)' name='[Action4]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Prediction' type='sheet' worksheet='Sale Forecasting' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Prediction' />
+      </command>
+    </action>
+    <action caption='Filter 5 (generated)' name='[Action5]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Prediction' type='sheet' worksheet='Holiday_Sale' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Prediction' />
+      </command>
+    </action>
+    <action caption='Filter 6 (generated)' name='[Action6]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Details' type='sheet' worksheet='Weekly Sales (3)' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Details' />
+      </command>
+    </action>
+    <action caption='Filter 7 (generated)' name='[Action7]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Details' type='sheet' worksheet='Weekly Sales (4)' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Details' />
+      </command>
+    </action>
+    <action caption='Filter 8 (generated)' name='[Action8]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Walmart Sale Details' type='sheet' worksheet='Avg Unemployment Rate' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Walmart Sale Details' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Avg Unemp (2)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Does Fuel Price or Temperature affects the weekly sale?</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='Fuel Price' datatype='real' name='[Fuel_Price]' role='measure' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[Temperature]' role='measure' type='quantitative' />
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Fuel_Price]' derivation='Avg' name='[avg:Fuel_Price:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Temperature]' derivation='Avg' name='[avg:Temperature:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Weekly_Sales]' derivation='Avg' name='[avg:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Temperature:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Fuel_Price:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]:1&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <encoding attr='space' class='1' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='col-width' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' value='120' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' value='Fuel &amp; Temperature Trend'>
+              <formatted-text>
+                <run>Fuel &amp; Temperature Trend</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Temperature:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;Sheet name=&quot;Weekly Sales (3)&quot; maxwidth=&quot;600&quot; maxheight=&quot;300&quot; filter=&quot;&lt;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]&gt;&quot;&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Fuel_Price:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;Sheet name=&quot;Weekly Sales (3)&quot; maxwidth=&quot;300&quot; maxheight=&quot;300&quot; filter=&quot;&lt;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]&gt;&quot;&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk]' y-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Temperature:qk] + ([federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk] + ([federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Fuel_Price:qk] + [federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Weekly_Sales:qk])))</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[tdy:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{0B71CCAB-DCCD-4359-8D34-E0CF504F26C8}' />
+    </worksheet>
+    <worksheet name='Avg Unemployment Rate'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Avg Unemployment Rate by Store Type</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='string' datatype-customized='true' name='[Store]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Type]' role='dimension' type='nominal' />
+            <column datatype='real' datatype-customized='true' name='[Unemployment]' role='measure' type='quantitative' />
+            <column-instance column='[Unemployment]' derivation='Avg' name='[avg:Unemployment:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Store]' derivation='None' name='[none:Store:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Type]' derivation='None' name='[none:Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Store:nk]' direction='DESC' using='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]' />
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]' value='n#,##0.00;-#,##0.00' />
+          </style-rule>
+          <style-rule element='legend-title'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' />
+              <text column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[avg:Unemployment:qk]</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Store:nk]</cols>
+      </table>
+      <simple-id uuid='{C423E7A4-12E3-459B-A88B-139DFD91407E}' />
+    </worksheet>
+    <worksheet name='Holiday_Sale'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Weekly Sales Trend</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='boolean' name='[IsHoliday (train.csv)]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='false' value='No Holiday' />
+                <alias key='true' value='Holiday' />
+              </aliases>
+            </column>
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[IsHoliday (train.csv)]' derivation='None' name='[none:IsHoliday (train.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Weekly_Sales]' derivation='Sum' name='[sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:IsHoliday (train.csv):nk]' />
+              <groupfilter function='member' level='[none:IsHoliday (train.csv):nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='legend'>
+            <format attr='col-width' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' value='80' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' value='Is Holiday??'>
+              <formatted-text>
+                <run>Is Holiday??</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.32883977890014648' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{AF9F4DBA-1858-4494-8C1C-E2F74E698313}' />
+    </worksheet>
+    <worksheet name='Sale Forecasting'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Weekly_Sales]' derivation='Sum' forecast-column-base='[sum:Weekly_Sales:qk]' forecast-column-type='forecast-value' name='[fVal:sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Weekly_Sales]' derivation='Sum' name='[sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month-Trunc' name='[tmn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[mn:Date:ok]'>
+            <groupfilter function='level-members' level='[mn:Date:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[mn:Date:ok]</column>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='col-width' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Forecast Indicator:nk]' value='120' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Forecast Indicator:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold='true'>&lt;Sheet name=&quot;Weekly Sales (3)&quot; maxwidth=&quot;600&quot; maxheight=&quot;300&quot; filter=&quot;&lt;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]&gt;&quot;&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[fVal:sum:Weekly_Sales:qk]</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[tmn:Date:ok]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-type='auto' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{99361093-1682-4523-87EA-E49EE6982A7C}' />
+    </worksheet>
+    <worksheet name='Sheet 13'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Average CPI over the time</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features' name='federated.1dfb4g410qkur71exv7hz11aeiib' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1dfb4g410qkur71exv7hz11aeiib'>
+            <column datatype='real' datatype-customized='true' name='[CPI]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' datatype='integer' name='[Store]' role='dimension' type='ordinal' />
+            <column-instance column='[CPI]' derivation='Avg' name='[avg:CPI:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Store]' derivation='None' name='[none:Store:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Quarter' name='[qr:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1dfb4g410qkur71exv7hz11aeiib].[yr:Date:ok]'>
+            <groupfilter from='2010' function='range' level='[yr:Date:ok]' to='2012' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1dfb4g410qkur71exv7hz11aeiib].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.1dfb4g410qkur71exv7hz11aeiib].[avg:CPI:qk]' field-type='quantitative' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <lod column='[federated.1dfb4g410qkur71exv7hz11aeiib].[none:Store:ok]' />
+              <lod column='[federated.1dfb4g410qkur71exv7hz11aeiib].[yr:Date:ok]' />
+              <lod column='[federated.1dfb4g410qkur71exv7hz11aeiib].[mn:Date:ok]' />
+            </encodings>
+            <reference-line axis-column='[federated.1dfb4g410qkur71exv7hz11aeiib].[avg:CPI:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.1dfb4g410qkur71exv7hz11aeiib].[avg:CPI:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+                <format attr='mark-labels-mode' value='range' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-range-scope' value='pane' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1dfb4g410qkur71exv7hz11aeiib].[avg:CPI:qk]</rows>
+        <cols>([federated.1dfb4g410qkur71exv7hz11aeiib].[yr:Date:ok] / [federated.1dfb4g410qkur71exv7hz11aeiib].[qr:Date:ok])</cols>
+      </table>
+      <simple-id uuid='{EF824510-AF45-4416-93EF-17647D00AD9D}' />
+    </worksheet>
+    <worksheet name='Summary by Store Type '>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' datatype='integer' name='[Dept]' role='dimension' type='ordinal' />
+            <column caption='Fuel Price' datatype='real' name='[Fuel_Price]' role='measure' type='quantitative' />
+            <column datatype='string' datatype-customized='true' name='[Store]' role='dimension' type='nominal' />
+            <column aggregation='Avg' datatype='real' name='[Temperature]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Type]' role='dimension' type='nominal' />
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Dept]' derivation='CountD' name='[ctd:Dept:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Store]' derivation='CountD' name='[ctd:Store:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Fuel_Price]' derivation='Max' name='[max:Fuel_Price:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Temperature]' derivation='Max' name='[max:Temperature:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Weekly_Sales]' derivation='Max' name='[max:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Fuel_Price]' derivation='Min' name='[min:Fuel_Price:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Temperature]' derivation='Min' name='[min:Temperature:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Type]' derivation='None' name='[none:Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Weekly_Sales:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Dept:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Store:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Temperature:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Temperature:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Fuel_Price:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Fuel_Price:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Weekly_Sales:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Dept:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[ctd:Store:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Temperature:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Temperature:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[min:Fuel_Price:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[max:Fuel_Price:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]</column>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='border-width' value='0' />
+            <format attr='border-style' value='none' />
+            <format attr='text-align' value='center' />
+            <format attr='height' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' value='25' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' value='136' />
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='border-width' value='0' />
+            <format attr='border-style' value='none' />
+            <format attr='border-style' data-class='subtotal' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-decoration' value='underline' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='border-width' value='0' />
+            <format attr='border-style' value='none' />
+            <format attr='border-style' data-class='subtotal' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='band-size' scope='rows' value='1' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-color' scope='cols' value='#606b76' />
+            <format attr='stroke-size' scope='cols' value='2' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[Multiple Values]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold='true'>&lt;Sheet name=&quot;Weekly Sales (3)&quot; maxwidth=&quot;600&quot; maxheight=&quot;200&quot; filter=&quot;&lt;[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]&gt;&quot;&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]</rows>
+        <cols>([federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok] / [federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk])</cols>
+      </table>
+      <simple-id uuid='{8874E292-3700-4713-8534-E474C3D02D9C}' />
+    </worksheet>
+    <worksheet name='Weekly Sales (3)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Weekly Sales by Store Type</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='string' datatype-customized='true' name='[Store]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Type]' role='dimension' type='nominal' />
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Store]' derivation='None' name='[none:Store:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Type]' derivation='None' name='[none:Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Weekly_Sales]' derivation='Sum' name='[sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[Tooltip (YEAR(Date))]'>
+            <groupfilter function='member' level='[yr:Date:ok]' member='2012' user:ui-action-filter='[Action - Weekly Sales (3)]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <computed-sort column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Store:nk]' direction='DESC' using='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' />
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[Tooltip (YEAR(Date))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' />
+              <text column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-pane' value-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Store:nk]</cols>
+      </table>
+      <simple-id uuid='{8CEB6861-A378-4C47-A3EA-24E1FC6A1F5D}' />
+    </worksheet>
+    <worksheet name='Weekly Sales (4)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Weekly Sales By Department</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='features+' name='federated.0ep8c9d0cwbxne11f3tqr1uztbyu' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ep8c9d0cwbxne11f3tqr1uztbyu'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' datatype='integer' name='[Dept]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Type]' role='dimension' type='nominal' />
+            <column caption='Weekly Sales' datatype='real' name='[Weekly_Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Dept]' derivation='None' name='[none:Dept:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Type]' derivation='None' name='[none:Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Weekly_Sales]' derivation='Sum' name='[sum:Weekly_Sales:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Dept:ok]' direction='DESC' using='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' />
+          <slices>
+            <column>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='annotation'>
+            <format attr='line-end-size' id='annotation_1' value='smallest' />
+            <format attr='border-color' id='annotation_1' value='#00000000' />
+            <format attr='fill-color' id='annotation_1' value='#55555541' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' />
+              <text column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' enable-instant-analytics='true' fill-above='false' fill-below='false' formula='quantiles' id='refline0' label-type='none' scope='per-table' symmetric='true' tile-count='4' value-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' z-order='1' />
+            <reference-line axis-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' enable-instant-analytics='true' formula='median' id='refline1' label-type='automatic' probability='95' scope='per-table' value-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' z-order='2' />
+            <reference-line axis-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' enable-instant-analytics='true' formula='average' id='refline2' label-type='automatic' probability='95' scope='per-pane' value-column='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]' z-order='3' />
+            <style>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='auto' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='range' />
+                <format attr='mark-labels-range-scope' value='pane' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]</rows>
+        <cols>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Dept:ok]</cols>
+        <annotations>
+          <annotation class='area' id='1' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run bold='true' fontalignment='2' fontcolor='#f28e2b'>Above Average Departments</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Dept:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>92</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='487957147.10200226'>
+                  <node-reference>
+                    <axis>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.85'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Dept:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>1</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='1025232.3853720613'>
+                  <node-reference>
+                    <axis>[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[sum:Weekly_Sales:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{9C64E017-4CC9-4C31-8850-472AED77CE7E}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Walmart Sale Details'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='11' param='horz' type='layout-flow' w='98666' x='667' y='1000'>
+            <zone h='98000' id='5' param='vert' type='layout-flow' w='98666' x='667' y='1000'>
+              <zone h='4375' id='7' type='title' w='98666' x='667' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='93625' id='6' type='layout-basic' w='98666' x='667' y='5375' />
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='93000' id='8' param='vert' type='layout-flow' w='98900' x='400' y='6625'>
+          <zone fixed-size='24' h='4000' id='33' is-fixed='true' name='Avg Unemployment Rate' pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' type='color' w='98900' x='400' y='6625'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone fixed-size='697' h='88125' id='17' is-fixed='true' param='vert' type='layout-flow' w='98900' x='400' y='10625'>
+            <zone h='28916' id='34' name='Weekly Sales (3)' w='98234' x='733' y='11125'>
+              <layout-cache minheight='165' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='29291' id='35' name='Weekly Sales (4)' w='98234' x='733' y='40041'>
+              <layout-cache minheight='168' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='28916' id='32' name='Avg Unemployment Rate' w='98234' x='733' y='69332'>
+              <layout-cache minheight='165' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='850' minheight='850' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='60' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='61' param='vert' type='layout-flow' w='98666' x='667' y='1000'>
+                <zone h='4375' id='7' type='title' w='98666' x='667' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='223' h='28916' id='34' is-fixed='true' name='Weekly Sales (3)' w='98234' x='733' y='11125'>
+                  <layout-cache minheight='165' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='227' h='29291' id='35' is-fixed='true' name='Weekly Sales (4)' w='98234' x='733' y='40041'>
+                  <layout-cache minheight='168' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='223' h='28916' id='32' is-fixed='true' name='Avg Unemployment Rate' w='98234' x='733' y='69332'>
+                  <layout-cache minheight='165' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='24' h='4000' id='33' name='Avg Unemployment Rate' pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' type='color' w='98900' x='400' y='6625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{56F3FBE9-D5A2-473C-A0DC-99FAF756C1C6}' />
+    </dashboard>
+    <dashboard name='Walmart Sale Prediction'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='11' param='horz' type='layout-flow' w='98666' x='667' y='1000'>
+            <zone h='98000' id='5' param='vert' type='layout-flow' w='98666' x='667' y='1000'>
+              <zone h='4375' id='7' type='title' w='98666' x='667' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='93625' id='6' type='layout-basic' w='98666' x='667' y='5375' />
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='93000' id='8' param='vert' type='layout-flow' w='98900' x='400' y='6625'>
+          <zone fixed-size='274' h='35250' id='17' is-fixed='true' param='horz' type='layout-flow' w='98900' x='400' y='6625'>
+            <zone fixed-size='678' h='34250' id='19' is-fixed='true' name='Summary by Store Type ' w='57167' x='733' y='7125'>
+              <layout-cache fixed-size-h='262' type-h='fixed' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='34250' id='18' name='Sheet 13' w='41058' x='57900' y='7125'>
+              <layout-cache cell-count-w='12' minheight='185' non-cell-size-w='45' type-h='scalable' type-w='cell' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone fixed-size='262' h='33750' id='22' is-fixed='true' param='horz' type='layout-flow' w='98900' x='400' y='41875'>
+            <zone fixed-size='666' h='32750' id='9' is-fixed='true' name='Avg Unemp (2)' w='56167' x='733' y='42375'>
+              <layout-cache minheight='264' minwidth='192' type-h='scalable' type-w='scalable' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='32750' id='23' name='Sale Forecasting' w='42067' x='56900' y='42375'>
+              <layout-cache cell-count-w='47' minheight='205' non-cell-size-w='54' type-h='scalable' type-w='cell' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='6250' id='27' layout-strategy-id='distribute-evenly' param='horz' type='layout-flow' w='98900' x='400' y='75625'>
+            <zone fixed-size='234' h='5250' id='14' is-fixed='true' leg-item-layout='horz' name='Holiday_Sale' pane-specification-id='2' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' type='color' w='32750' x='750' y='76125'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone fixed-size='524' h='5250' id='12' is-fixed='true' leg-item-layout='horz' name='Avg Unemp (2)' pane-specification-id='1' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' type='color' w='32750' x='33500' y='76125'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='5250' id='26' leg-item-layout='horz' name='Sale Forecasting' pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Forecast Indicator:nk]' type='color' w='32750' x='66250' y='76125'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='17750' id='13' name='Holiday_Sale' w='98900' x='400' y='81875'>
+            <layout-cache minheight='164' type-h='scalable' type-w='fixed' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1500' minheight='1500' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='60' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='61' param='vert' type='layout-flow' w='98666' x='667' y='1000'>
+                <zone h='4375' id='7' type='title' w='98666' x='667' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='266' h='34250' id='19' is-fixed='true' name='Summary by Store Type ' w='57167' x='733' y='7125'>
+                  <layout-cache fixed-size-h='262' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='266' h='34250' id='18' is-fixed='true' name='Sheet 13' w='41058' x='57900' y='7125'>
+                  <layout-cache cell-count-w='12' minheight='185' non-cell-size-w='45' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='254' h='32750' id='9' is-fixed='true' name='Avg Unemp (2)' w='56167' x='733' y='42375'>
+                  <layout-cache minheight='264' minwidth='192' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='524' h='5250' id='12' leg-item-layout='horz' name='Avg Unemp (2)' pane-specification-id='1' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' type='color' w='32750' x='33500' y='76125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='254' h='32750' id='23' is-fixed='true' name='Sale Forecasting' w='42067' x='56900' y='42375'>
+                  <layout-cache cell-count-w='47' minheight='205' non-cell-size-w='54' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5250' id='26' leg-item-layout='horz' name='Sale Forecasting' pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Forecast Indicator:nk]' type='color' w='32750' x='66250' y='76125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='134' h='17750' id='13' is-fixed='true' name='Holiday_Sale' w='98900' x='400' y='81875'>
+                  <layout-cache minheight='164' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='234' h='5250' id='14' leg-item-layout='horz' name='Holiday_Sale' pane-specification-id='2' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' type='color' w='32750' x='750' y='76125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{B3B961EF-7EEE-4E9E-9F8A-4ABA95EE6D32}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='72'>
+    <window class='dashboard' maximized='true' name='Walmart Sale Prediction'>
+      <viewpoints>
+        <viewpoint name='Avg Unemp (2)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Holiday_Sale'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sale Forecasting'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 13'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Summary by Store Type ' />
+      </viewpoints>
+      <active id='19' />
+      <simple-id uuid='{DB73AD8E-83F4-48BA-A4D5-008DAD79F661}' />
+    </window>
+    <window class='dashboard' name='Walmart Sale Details'>
+      <viewpoints>
+        <viewpoint name='Avg Unemployment Rate'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Weekly Sales (3)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Weekly Sales (4)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='35' />
+      <simple-id uuid='{743825B7-57F3-4AB5-83AD-5839BCDBD09B}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Avg Unemp (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]' type='filter' />
+            <card pane-specification-id='1' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[:Measure Names]' show-title='false' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D80EB444-C404-4645-BE93-E80FA6CADBDB}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Avg Unemployment Rate'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E45EAFA5-7937-4F98-8372-84192087B8C3}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Holiday_Sale'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:IsHoliday (train.csv):nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C01692D7-E027-4E88-8D71-5DD6B5B7D10D}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Sale Forecasting'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]' type='filter' />
+            <card param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[mn:Date:ok]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{40CC4908-F0F2-4C99-AB19-A5DFF6228E07}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 13'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C93B6AEB-E0FE-4AEE-9A7E-FDDC2C274907}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Summary by Store Type '>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[yr:Date:ok]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{582BB5FF-A07E-475F-95DB-43AC6C2FA2B4}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Weekly Sales (3)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D5A51D46-4488-4693-9295-179FC233D286}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Weekly Sales (4)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0ep8c9d0cwbxne11f3tqr1uztbyu].[none:Type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A8C76DE1-EEDA-4AF8-B8F5-32244B16900B}' />
+    </window>
+  </windows>
+</workbook>
